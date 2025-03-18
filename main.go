@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
+	"github.com/m1/go-localize/templates"
 	"gopkg.in/yaml.v2"
 )
 
@@ -85,7 +86,7 @@ func getLocalizationFiles(dir string) ([]string, error) {
 	var files []string
 	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		ext := filepath.Ext(path)
-		if !info.IsDir() && (ext == jsonFileExt || ext == yamlFileExt) {
+		if !info.IsDir() && (ext == jsonFileExt || ext == yamlFileExt || ext == tomlFileExt) {
 			files = append(files, path)
 		}
 		return nil
@@ -121,7 +122,7 @@ func generateFile(output string, localizations map[string]string) error {
 		return strings.Repeat(" ", maxWidth-len(name))
 	}
 
-	return packageTemplate.Execute(f, struct {
+	return templates.PackageTemplate.Execute(f, struct {
 		Timestamp     time.Time
 		Localizations map[string]string
 		Package       string
