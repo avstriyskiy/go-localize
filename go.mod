@@ -1,4 +1,4 @@
-module github.com/m1/go-localize
+module github.com/avstriyskiy/go-localize
 
 go 1.13
 

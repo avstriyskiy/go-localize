@@ -8,7 +8,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -16,7 +15,7 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/m1/go-localize/cmd/internal/templates"
+	"github.com/avstriyskiy/go-localize/internal/templates"
 	"gopkg.in/yaml.v2"
 )
 
@@ -143,7 +142,7 @@ func getLocalizationsFromFile(file string) (map[string]string, error) {
 		return nil, err
 	}
 
-	byteValue, err := ioutil.ReadAll(openFile)
+	byteValue, err := io.ReadAll(openFile)
 	if err != nil {
 		return nil, err
 	}
