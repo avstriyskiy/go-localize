@@ -16,7 +16,7 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/m1/go-localize/templates"
+	"github.com/m1/go-localize/cmd/internal/templates"
 	"gopkg.in/yaml.v2"
 )
 
